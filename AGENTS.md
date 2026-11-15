@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Application architecture
+- Keep AI calls in server-only helpers exposed through validated TanStack server functions so credentials and prompts never enter the browser.
+- Process DOCX locally and send PDF inline to the AI; do not persist private resumes or analyses because accounts and history are outside the requested scope.
+- Validate quoted skill evidence against the source and keep ATS exports as single-column editable DOCX documents to preserve provenance and readability.
