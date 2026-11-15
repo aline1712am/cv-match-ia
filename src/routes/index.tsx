@@ -56,6 +56,8 @@ function Index() {
   async function download() { setExporting(true); setError(''); try { await exportResume(edited); } catch { setError('Não foi possível exportar o arquivo. Tente novamente.'); } finally { setExporting(false); } }
   const steps = ['Currículo e vaga', 'Análise de compatibilidade', 'Currículo otimizado'];
   const currentStep = view === 'input' ? 0 : view === 'result' ? 1 : 2;
+  const scoreTone = !result ? 'primary' : result.score >= 70 ? 'success' : result.score >= 40 ? 'warning' : 'destructive';
+  const scoreVerdict = !result ? '' : result.score >= 70 ? 'Conexão forte com a vaga' : result.score >= 40 ? 'Boa conexão, com espaço para crescer' : 'Conexão inicial — seu potencial ainda pode aparecer mais';
 
   return <div className="min-h-screen">
     <aside className="app-sidebar">

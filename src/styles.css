@@ -201,6 +201,34 @@
 .feature-icon { color: var(--primary); margin-bottom: 10px; }
 .page-footer { border-top: 1px solid var(--border); margin-top: 35px; padding-top: 19px; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 10px; color: var(--muted-foreground); }
 .result-score { width: 110px; height: 110px; border: 8px solid var(--accent); border-radius: 50%; display: flex; flex-direction: column; justify-content: center; align-items: center; flex-shrink: 0; color: var(--primary); }
+.result-hero { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; background: var(--card); border: 1px solid var(--border); border-radius: 10px; box-shadow: var(--surface-shadow); padding: 28px; margin-bottom: 22px; }
+.score-gauge { position: relative; width: 132px; height: 132px; flex-shrink: 0; }
+.score-gauge svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.score-track { fill: none; stroke: var(--accent); stroke-width: 9; }
+.score-fill { fill: none; stroke-width: 9; stroke-linecap: round; stroke-dasharray: 326.7; stroke-dashoffset: calc(326.7 - (326.7 * var(--score) / 100)); animation: score-draw 1.2s ease both; }
+@keyframes score-draw { from { stroke-dashoffset: 326.7; } }
+.score-gauge.tone-success .score-fill { stroke: var(--success); }
+.score-gauge.tone-warning .score-fill { stroke: var(--warning); }
+.score-gauge.tone-destructive .score-fill { stroke: var(--destructive); }
+.score-gauge.tone-primary .score-fill { stroke: var(--primary); }
+.score-value { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.score-value strong { font-size: 27px; font-weight: 700; }
+.score-value span { font-size: 9px; color: var(--muted-foreground); }
+.score-verdict { display: inline-flex; align-items: center; font-size: 10px; font-weight: 600; letter-spacing: 0.2px; padding: 5px 11px; border-radius: 99px; }
+.score-verdict.tone-success { background: var(--success-soft); color: var(--success); }
+.score-verdict.tone-warning { background: var(--warning-soft); color: var(--warning); }
+.score-verdict.tone-destructive { background: color-mix(in oklch, var(--destructive) 10%, transparent); color: var(--destructive); }
+.stat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 22px; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--surface-shadow); padding: 16px 18px; display: flex; align-items: center; gap: 13px; }
+.stat-card strong { font-size: 22px; font-weight: 700; line-height: 1.1; }
+.stat-card p { font-size: 11px; color: var(--muted-foreground); margin-top: 2px; }
+.stat-icon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0; }
+.stat-icon.tone-success { background: var(--success-soft); color: var(--success); }
+.stat-icon.tone-warning { background: var(--warning-soft); color: var(--warning); }
+.stat-icon.tone-primary { background: var(--accent); color: var(--primary); }
+.evidence-card { border: 1px solid var(--border); border-radius: 8px; background: var(--background); padding: 13px 16px; }
+.evidence-quote { margin-top: 7px; border-left: 3px solid var(--success); padding-left: 11px; font-size: 12px; line-height: 1.7; color: var(--muted-foreground); font-style: italic; }
+.suggestion-card { display: flex; gap: 16px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--surface-shadow); padding: 18px 20px; }
 .resume-editor { width: 100%; min-height: 620px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 25px; line-height: 1.9; font-size: 13px; outline-color: var(--primary); }
 @media (min-width: 1500px) { .workspace { padding-top: 45px; } .drop-area, .job-input { min-height: 290px; } }
 @media (max-width: 1050px) { .app-sidebar { width: 210px; } .app-main { margin-left: 210px; } .workspace { padding: 30px 25px; } .app-topbar { padding: 0 25px; } .stepper { gap: 10px; padding: 17px; } .step-item { font-size: 11px; } }
